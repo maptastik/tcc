@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>TCC Project Page</title>
+		<meta name="description" content="TCC Project Page">
+		<meta name="author" content="TCC">
+		<meta name="robots" content="noindex">
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<style>
+			* {
+				font-family: sans-serif;
+			}	
+			header, section {
+				border-bottom: 2px solid black;
+			}
+			section h1 {
+				font-size: 2em;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>TCC Project Page</h1>
+			<p>This page is meant to be a place to quickly navigate the maps created for the TCC project.</p>
+		</header>
+		<section id="well-being">
+			<h1>Well-Being</h1>
+			<h2>Map 1: Coal Production, 1983 - 2013</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: County</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variable(s)
+					<ul>
+						<li>Coal production</li>
+					</ul>
+				</li>
+				<li>Layers
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Features
+					<ul>
+						<li>Time slider (annual; 1983-2013)</li>
+						<li>Popup with lots of graphs</li>
+					</ul>
+				</li>
+				<li>Data Source:
+					<ul>
+						<li>EIA (?)</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>Annual Coal Production, 1983-2013 with timeslider</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Map 2: American Human Development Index (HDI) &amp; Coal Production</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: State</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variable(s)
+					<ul>
+						<li>American HDI</li>
+					</ul>
+				</li>
+				<li>Layers:
+					<ul>
+						<li>Coal Producing States</li>
+						<li>US States</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Features:
+					<ul>
+						<li>Time slider (select years; 2000, 2005, 2008, 2001</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>American Human Development Project, 2013-14</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>HDI with time slider to show years 2000, 2005, 2008, and 2010</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Map 3: Inequality, Education, Income Compared to Coal Production</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: County</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variable(s):
+					<ul>
+						<li>Coal production</li>
+						<li>GINI</li>
+						<li>Education Index</li>
+						<li>Income Index</li>
+					</ul>
+				</li>
+				<li>Layers:
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Features
+					<ul>
+						<li>Popup for county with variable info</li>
+						<li>Toggle back and forth between variables</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>American Human Development Project 2010</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>GINI only</li>
+						<li>Education Index only</li>
+						<li>Income Index</li>
+						<li>Combined GINI, Education Index, and Income Index with ability to switch between variables</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section id="public-revenues">
+			<h1>Public Revenues</h1>
+			<h2>Map 4: Government Spending Compared to Coal Production</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: State</li>
+				<li>Map Type: Bivariate Choropleth</li>
+				<li>Variables:
+					<ul>
+						<li>Coal Production</li>
+						<li>Per Pupil Spending, Public K-12</li>
+						<li>State Spending on Higher Education</li>
+						<li>State Expenditure on Transportation</li>
+						<li>Practicing Physicians</li>
+						<li>Federal Revenue to Each State</li>
+						<li>State Spending on Academic R&amp;D</li>
+					</ul>
+				</li>
+				<li>Layers:
+					<ul>
+						<li>US States</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Features
+					<ul>
+						<li>Some sort of pop up with variable info</li>
+					</ul>
+				</li>
+				<li>Data Source(s)
+					<ul>
+						<li>American Human Development Project, 2013-14</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>switch between variables</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section id="livelihoods">
+			<h1>Livelihoods</h1>
+			<p><strong>These maps should use annual coal production</strong></p>
+			<h2>Map 5: Jobs vs Production in the Coal Industry</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: County</li>
+				<li>Map Type: (Bivariate) Choropleth</li>
+				<li>Variables:
+					<ul>
+						<li>Coal extraction</li>
+						<li>Average annual employment in coal</li>
+					</ul>
+				</li>
+				<li>Layers:
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Feature(s):
+					<ul>
+						<li>None specified</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>Annual Average Employment Level in Coal, 2012-2014, NAICS</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>Average annual employment in coal</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Map 6: Median Earnings Compared to Coal Production</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: County</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variables:
+					<ul>
+						<li>Median Earnings</li>
+						<li>Coal Production</li>
+					</ul>
+				</li>
+				<li>Layers:
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Feature(s)
+					<ul>
+						<li>Pop out with graph of change over time data for each county</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>American Human Development Project</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>Median earnings</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Map 7: Economic Well-Being Compared to Coal Production</h2>
+			<ul>
+				<li> Scale: National</li>
+				<li> Granularity: State</li>
+				<li> Map Type: (Bivariate) Choropleth</li>
+				<li> Variables:
+					<ul>
+						<li> Coal Production</li>
+						<li> Labor Force Participation Rate</li>
+						<li> State Per Capita GDP</li>
+						<li> Commute 60 min. or more</li>
+					</ul>
+				</li>
+				<li> Layer(s):
+					<ul>
+						<li> US Counties</li>
+						<li> Basemap</li>
+					</ul>
+				</li>
+				<li> Feature(s):
+					<ul>
+						<li> Pop out with variable info</li>
+					</ul>
+				</li>
+				<li> Data Source(s):
+					<ul>
+						<li> American Human Development Project, 2013-14</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>Labor Force Participation Rate</li>
+						<li>State Per Capita GDP</li>
+						<li>Commute 60 min. or more</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section id="justice">
+			<h1>Justice</h1>
+			<h2>Map 8:  Injustice &amp; Extractives</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: County</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variables:
+					<ul>
+						<li>Extraction levels</li>
+						<li>Children under 6 living in poverty</li>
+						<li>Adults 65+ living in poverty</li>
+						<li>Poverty rate</li>
+						<li>Renters with Severe Housing-Cost Burden</li>
+						<li>Marginally Attached Workers</li>
+						<li>Housing Units Occupied by Owner</li>
+						<li>Foreclosures</li>
+						<li>Economically Disadvantaged Students</li>
+						<li>Army Recruits</li>
+					</ul>
+				</li>
+				<li>Layer(s):
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Features:
+					<ul>
+						<li>Toggle between 2009 &amp; 2010 data</li>
+					</ul>
+				</li>
+				<li>Data Source(s)
+					<ul>
+						<li>American Human Development Project, 2009-2010</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>Toggle between all variables</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Map 9: Violence &amp; Extractives</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: State</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variables:
+					<ul>
+						<li>Trauma-Related Death Rate</li>
+						<li>Violent Crime</li>
+						<li>Rape</li>
+					</ul>
+				</li>
+				<li>Layer(s)
+					<ul>
+						<li>US States</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>Features
+					<ul>
+						<li>Time Slider (2000, 2005, 2008, 2010)</li>
+						<li>Popouts</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>American Human Development Project, 2013-14</li>
+					</ul>
+				</li>
+				<li>Map(s)
+					<ul>
+						<li>Trauma-Related Death Rate w/ time slider for 2000, 2005, 2008, 2010</li>
+						<li>Violent Crime w/ time slider for 2000, 2005, 2008, 2010</li>
+						<li>Rape w/ time slider for 2000, 2005, 2008, 2010</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section id="culture">
+			<h1>Culture</h1>
+			<h2>Map 10: Cultural Vitality &amp; Coal Production</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: County</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variables
+					<ul>
+						<li>Musical Groups and Performers (71113)</li>
+						<li>Historical Sites and Similar Institutions (712)</li>
+					</ul>
+				</li>
+				<li>Layers
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>
+					Features:
+					<ul>
+						<li>TimeSlider</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>US Census County Busines Patterns 2004-2013</li>
+					</ul>
+				</li>
+				<li>Note(s)
+					<ul>
+						<li>This will probably be two map, each with the time slider</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>Musical Groups &amp; Performers w/ time slider (2004-2013)</li>
+						<li>Historical Sites ans Similar Institutions w/ time slider (2004-2013)</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section id="environment">
+			<h1>Environment</h1>
+			<h2>Map 11: Cultural Vitality &amp; Coal Production</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: State</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variables
+					<ul>
+						<li>Superfund</li>
+						<li>protected Forest (acres)</li>
+					</ul>
+				</li>
+				<li>Layers
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>
+					Features:
+					<ul>
+						<li>TimeSlider</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>US Census County Busines Patterns 2004-2013</li>
+					</ul>
+				</li>
+				<li>Note(s)
+					<ul>
+						<li>This will probably be two map, each with the time slider</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>Superfund w/ time slider (2004-2013)</li>
+						<li>Protected Forest w/ time slider (2004-2013)</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Map 11: Annual Consumption of water and energy</h2>
+			<ul>
+				<li>Scale: National</li>
+				<li>Granularity: State</li>
+				<li>Map Type: Choropleth</li>
+				<li>Variables
+					<ul>
+						<li>Energy Consumption (BTUs percapita)</li>
+						<li>Water Consumption (gallons per day, per capita)</li>
+					</ul>
+				</li>
+				<li>Layers
+					<ul>
+						<li>US Counties</li>
+						<li>Basemap</li>
+					</ul>
+				</li>
+				<li>
+					Features:
+					<ul>
+						<li>TimeSlider</li>
+					</ul>
+				</li>
+				<li>Data Source(s):
+					<ul>
+						<li>AHDI project </li>
+					</ul>
+				</li>
+				<li>Note(s)
+					<ul>
+						<li>This will probably be two map, each with the time slider</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>Energy Consumption</li>
+						<li>Water Consumption</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+	</body>
+</html>
