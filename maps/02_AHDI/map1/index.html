@@ -1,0 +1,154 @@
+<html>
+<head>
+  <title>TCC - AHDI</title>
+  <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css" />
+  
+  <style type='cartocss/html' id='hdi_10'>
+    #us_states_merge{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #us_states_merge [ hdi_10 < 4] {
+       polygon-fill: #d7191c;
+    }
+    #us_states_merge [ hdi_10 >= 4] {
+       polygon-fill: #fdae61;
+    }
+    #us_states_merge [ hdi_10 >= 4.5] {
+       polygon-fill: #ffffdf;
+    }
+    #us_states_merge [ hdi_10 >= 5.5] {
+       polygon-fill: #ffffdf;
+    }
+    #us_states_merge [ hdi_10 >= 6] {
+       polygon-fill: #2c7bb6;
+    }
+  </style>
+  <style type='cartocss/html' id='hdi_08'>
+    #us_states_merge{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #us_states_merge [ hdi_08 < 4] {
+       polygon-fill: #d7191c;
+    }
+    #us_states_merge [ hdi_08 >= 4] {
+       polygon-fill: #fdae61;
+    }
+    #us_states_merge [ hdi_08 >= 4.5] {
+       polygon-fill: #ffffdf;
+    }
+    #us_states_merge [ hdi_08 >= 5.5] {
+       polygon-fill: #abd9e9;
+    }
+    #us_states_merge [ hdi_08 >= 6] {
+       polygon-fill: #2c7bb6;
+    }
+  </style>
+  <style type='cartocss/html' id='hdi_05'>
+    #us_states_merge{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #us_states_merge [ hdi_05 < 4] {
+       polygon-fill: #d7191c;
+    }
+    #us_states_merge [ hdi_05 >= 4] {
+       polygon-fill: #fdae61;
+    }
+    #us_states_merge [ hdi_05 >= 4.5] {
+       polygon-fill: #ffffdf;
+    }
+    #us_states_merge [ hdi_05 >= 5.5] {
+       polygon-fill: #abd9e9;
+    }
+    #us_states_merge [ hdi_05 >= 6] {
+       polygon-fill: #2c7bb6;
+    }
+  </style>
+  <style type='cartocss/html' id='hdi_00'>
+    #us_states_merge{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #us_states_merge [ hdi_00 < 4] {
+       polygon-fill: #d7191c;
+    }
+    #us_states_merge [ hdi_00 >= 4] {
+       polygon-fill: #fdae61;
+    }
+    #us_states_merge [ hdi_00 >= 4.5] {
+       polygon-fill: #ffffdf;
+    }
+    #us_states_merge [ hdi_00 >= 5.5] {
+       polygon-fill: #abd9e9;
+    }
+    #us_states_merge [ hdi_00 >= 6] {
+       polygon-fill: #2c7bb6;
+    }
+  </style>
+</head>
+<body onload="init()">
+  <!-- <h1>Multi-Scalar Abandonment<br><small>Properties of owners with vacant properties<br>Red lines denote a connection to a property on the VPRC list</small></h1> -->
+  <div id='map'></div>
+
+  <script type="infowindow/html" id="infowindow_template">
+    <div class="cartodb-popup">
+      <a href="#close" class="cartodb-popup-close-button close">x</a>
+
+       <div class="cartodb-popup-content-wrapper">
+         <div class="cartodb-popup-content">
+          <h2>{{name}}</h2>
+            <ul class="cartodb-content-list-no-decoration">
+              <li><b>2010:</b> {{hdi_10}}</li>
+              <li><b>2008:</b> {{hdi_08}}</li>
+              <li><b>2005:</b> {{hdi_05}}</li>
+              <li><b>2000:</b> {{hdi_00}}</li>
+            </ul>
+         </div>
+       </div>
+       <div class="cartodb-popup-tip-container"></div>
+    </div>
+  </script>
+
+<div class="dropdown" id="menu">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Select Year
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#" class="selected selectable" data="hdi_10" data-type="cartocss">2010</a></li>
+    <li><a href="#" class="selectable" data="hdi_08" data-type="cartocss">2008</a></li>
+    <li><a href="#" class="selectable" data="hdi_05" data-type="cartocss">2005</a></li>
+    <li><a href="#" class="selectable" data="hdi_00" data-type="cartocss">2000</a></li>
+  </ul>
+</div>
+  
+
+  <!-- <div class="btn-group-vertical" id="menu" role="group" aria-label="...">
+    <button type="button" class="btn btn-default all selected selectable" data="hdi_10" data-type="cartocss">2010</button>
+    <button type="button" class="btn btn-default finnell selectable" data="hdi_08" data-type="cartocss">2008</button>
+    <button type="button" class="btn btn-default top-five selectable" data="hdi_05" data-type="cartocss">2005</button>
+    <button type="button" class="btn btn-default top-five selectable" data="hdi_00" data-type="cartocss">2000</button>
+  </div> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='app.js'></script>
+</body>
+</html>
