@@ -5,11 +5,13 @@ window.onload = function() {
     var $options = $("#menu").find("ul li a");
     $options.click(function(e) {
       var $button = $(e.target);
-      var selected = $button.attr('data');
+      var selected = $button.attr('data')
+      var selectedYear = $button.attr('value');
 
       if($(this).hasClass('selectable')){
         $options.removeClass('selected');
         $button.addClass('selected');
+        $('.title-year').html(selectedYear);
         cartocss = $('#' + selected).text();
         layer.setCartoCSS(cartocss);
       }
@@ -32,9 +34,11 @@ var sublayer;
 
 var map = new L.Map('map', {
   center: [39.828328, -98.579416],
-  zoom: 4
+  zoom: 4,
+  zoomControl: false
 });
 
+new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
 map.attributionControl.addAttribution('<a href="http://www.measureofamerica.org/" target="_blank">Measure of America</a>');
 
 // Add a basemap to the map object just created
@@ -50,7 +54,7 @@ function getColor(d) {
            d >= 4  ? '#fdae61' :
                       '#d7191c';
 }
-var legend = L.control({position: 'bottomright'});
+var legend = L.control({position: 'bottomleft'});
 
 legend.onAdd = function (map) {
 
@@ -60,7 +64,7 @@ legend.onAdd = function (map) {
         labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML = '<b>American Human Development Index (AHDI)'
+    div.innerHTML = '<span class="legend-title">American Human Development Index (AHDI)</span>'
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
             '<div><i style="background:' + colors[i] + '"></i> ' +

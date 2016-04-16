@@ -15,7 +15,7 @@ html, body {
 
 #menu {
   position: absolute;
-  top:10px; right: 40px;
+  top:12px; right: 32;
   width: 80px; height:60px; 
   background: transparent;
   z-index:10;
@@ -24,26 +24,17 @@ html, body {
   top: 35;
 }
 
-.dropdown-menu {
-  min-width: 110px;
-  max-width: 160px;
+.dropdown>button {
+  border-radius: 0;
+    border-width: 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-/*#menu a { 
-  margin: 15px 10px 0 0;
-  float: right;
-  vertical-align: baseline;
+
+.dropdown-menu {
+  min-width: 80px;
   max-width: 100px;
-  padding: 10px;
-  text-align: center;
-  font: bold 14px Lato,Arial;
-  line-height: normal;
-  color: #555;
-  border-radius: 4px;
-  border: 2px solid #fff;
-  background: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}*/
+  border-radius: 0;
+}
 
 .btn-default:hover {
   background: #fff;
@@ -59,17 +50,27 @@ html, body {
   background: #9b59b6;
 }
 
-h1 {
+.title {
     position: absolute;
+    max-width: 500px;
     z-index: 100;
-    top: 10px;
-    left: 10px;
-    padding: 8px 15px;
+    top: 12px;
+    left: 0;
+    padding: 5px;
     margin: 0;
-    color: whitesmoke;
-    font-size: 1.5em;
-    background: rgba(25,25,25,0.8);
-    border-radius: 5px;      
+    color: #343434;
+    background-color: rgba(255,255,255,1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+}
+.title h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.6em;
+}
+
+.title .title-year {
+  font-size: 0.8em;
 }
 
 div.cartodb-popup div.cartodb-popup-content-wrapper {
@@ -85,11 +86,12 @@ div.cartodb-popup div.cartodb-popup-content-wrapper {
     max-width: 150px;
     color: #555;
     padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
+    font-family: Lato,Arial;
     background: white;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,1);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    border-radius: 0;
+    margin-bottom: 35px !important;
 }
 .legend i {
     width: 18px;
@@ -99,6 +101,52 @@ div.cartodb-popup div.cartodb-popup-content-wrapper {
     opacity: 0.85;
 }
 
+.legend .legend-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 .legend>div {
-  margin-top: 2px;
+  margin-top: 7px;
+}
+
+.leaflet-touch .leaflet-bar, .leaflet-touch .leaflet-control-layers {
+  border: 0 solid rgba(0,0,0,0);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+}
+
+.leaflet-bar a:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.leaflet-bar a:last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+
+@media only screen and (min-width: 450px) and (max-width: 600px) {
+.title {
+    max-width: 300px;
+}
+.title h1 {
+  font-size: 1.4em;
+}
+
+.title .title-year {
+  font-size: 0.8em;
+}
+}
+@media only screen and (min-width: 0px) and (max-width: 450px) {
+.title {
+    max-width: 150px;
+}
+.title h1 {
+  font-size: 1.1em;
+}
+
+.title .title-year {
+  font-size: 0.8em;
+}
 }
