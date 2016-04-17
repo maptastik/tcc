@@ -30,6 +30,8 @@ window.onload = function() {
     }]
   }
 
+  var stateCoal = 'https://true-cost-collaboratory.cartodb.com/api/v2/viz/c468ebee-0407-11e6-be1b-0ecfd53eb7d3/viz.json'
+
 var sublayer;
 
 var map = new L.Map('map', {
@@ -47,38 +49,8 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   subdomains: 'abcd',
 }).addTo(map);
 
-function getColor(d) {
-    return d >= 6 ? '#2c7bb6' :
-           d >= 5.5  ? '#abd9e9' :
-           d >= 4.5  ? '#ffffdf' :
-           d >= 4  ? '#fdae61' :
-                      '#d7191c';
-}
-var legend = L.control({position: 'bottomleft'});
-
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 4, 4.5, 5.5, 6],
-        colors = ['#d7191c','#fdae61','#ffffdf','#abd9e9','#2c7bb6']
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML = '<span class="legend-title">American Human Development Index (AHDI)</span>'
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<div><i style="background:' + colors[i] + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '</div>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(map);
-
-
 cartodb.createLayer(map, layerSource)
-  .addTo(map)
+  .addTo(map, 0)
   .done(function(layer){
       sublayer = layer.getSubLayer(0);
       cartodb.vis.Vis.addInfowindow(
@@ -91,6 +63,15 @@ cartodb.createLayer(map, layerSource)
         });
       // sublayer.infowindow.set('template', $('#infowindow_template').html());
       createSelector(sublayer);
+
+      cartodb.createLayer(map, stateCoal)
+        .addTo(map, 1)
+        .done(function(layer){
+          console.log('added stateCoal', stateCoal);
+        })
+        .error(function () {
+          console.log('problem adding stateCoal')
+        })
   })
   .error(function(err) {
     console.log("error: " + err);
