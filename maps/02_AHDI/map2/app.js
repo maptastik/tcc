@@ -30,7 +30,7 @@ window.onload = function() {
     }]
   }
 
-  var stateCoal = 'https://true-cost-collaboratory.cartodb.com/api/v2/viz/c468ebee-0407-11e6-be1b-0ecfd53eb7d3/viz.json'
+  var stateCoal = 'https://true-cost-collaboratory.cartodb.com/api/v2/viz/68fa9060-0500-11e6-a135-0ecd1babdde5/viz.json'
 
 var sublayer;
 
