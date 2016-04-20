@@ -106,18 +106,6 @@ div.cartodb-popup div.cartodb-popup-tip-container {
   margin-top: 5px;
 }
 
-div.cartodb-tooltip {
-  font-family: Lato, Arial;
-  font-size: 1em;
-}
-div.cartodb-tooltip-content-wrapper {
-  -mox-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
 /*Legend*/
 .my-legend {
   position: absolute;
