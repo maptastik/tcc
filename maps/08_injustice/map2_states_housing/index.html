@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>TCC - AHDI</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css" />
+  
+  <style type='cartocss/html' id='rentersseverecostburden_10'>
+    #adhp_state_all{
+      polygon-fill: #FFFFCC;
+      polygon-opacity: 0.85;
+      line-color: #ffffff;
+      line-width: 0.5;
+      line-opacity: 0.5;
+    }
+    #adhp_state_all [ rentersseverecostburden_10 < 15] {
+       polygon-fill: #edf8e9;
+    }
+    #adhp_state_all [ rentersseverecostburden_10 >= 15] {
+       polygon-fill: #bae4b3;
+    }
+    #adhp_state_all [ rentersseverecostburden_10 >= 18] {
+       polygon-fill: #74c476;
+    }
+    #adhp_state_all [ rentersseverecostburden_10 >= 21] {
+       polygon-fill: #31a354;
+    }
+    #adhp_state_all [ rentersseverecostburden_10 >= 24] {
+       polygon-fill: #006d2c;
+    }
+  </style>
+  <style type='cartocss/html' id='housingunitsowneroccupied_10'>
+    #adhp_state_all{
+      polygon-fill: #FFFFCC;
+      polygon-opacity: 0.85;
+      line-color: #ffffff;
+      line-width: 0.5;
+      line-opacity: 0.5;
+    }
+    #adhp_state_all [ housingunitsowneroccupied_10 < 55] {
+       polygon-fill: #eff3ff;
+    }
+    #adhp_state_all [ housingunitsowneroccupied_10 >= 55] {
+       polygon-fill: #bdd7e7;
+    }
+    #adhp_state_all [ housingunitsowneroccupied_10 >= 60] {
+       polygon-fill: #6baed6;
+    }
+    #adhp_state_all [ housingunitsowneroccupied_10 >= 65] {
+       polygon-fill: #3182bd;
+    }
+    #adhp_state_all [ housingunitsowneroccupied_10 >= 70] {
+       polygon-fill: #08519c;
+    }
+  </style>
+  <style type='cartocss/html' id='foreclosuresper10000_10'>
+    #adhp_state_all{
+      polygon-fill: #fee5d9;
+      polygon-opacity: 0.85;
+      line-color: #ffffff;
+      line-width: 0.5;
+      line-opacity: 0.5;
+    }
+    #adhp_state_all [ foreclosuresper10000_10 < 15] {
+       polygon-fill: #fee5d9;
+    }
+    #adhp_state_all [ foreclosuresper10000_10 >= 15] {
+       polygon-fill: #fcae91;
+    }
+    #adhp_state_all [ foreclosuresper10000_10 >= 30] {
+       polygon-fill: #fb6a4a;
+    }
+    #adhp_state_all [ foreclosuresper10000_10 >= 45] {
+       polygon-fill: #de2d26;
+    }
+    #adhp_state_all [ foreclosuresper10000_10 >= 60] {
+       polygon-fill: #a50f15;
+    }
+  </style>
+</head>
+<body onload="init()">
+  <div class="title">
+    <h1><span class="title-variable">Renters with Severe Housing Cost Burden (%)</span><br><span>2010</span></h1>
+  </div>
+  <div id='map'></div>
+
+  <script type="infowindow/html" id="infowindow_template">
+    <div class="cartodb-popup">
+      <a href="#close" class="cartodb-popup-close-button close">x</a>
+
+       <div class="cartodb-popup-content-wrapper">
+         <div class="cartodb-popup-content">
+          <h2>{{name}}</h2>
+            <ul class="cartodb-content-list-no-decoration">
+              <li><b>Renters w/ Severe Housing Cost Burden:</b> {{rentersseverecostburden_10}}%</li>
+              <li><b>Owner Occupied Housing Units:</b> {{housingunitsowneroccupied_10}}%</li>
+              <li><b>Foreclosures:</b> {{foreclosuresper10000_10}} per 10K Homes</li>
+            </ul>
+         </div>
+       </div>
+       <div class="cartodb-popup-tip-container"></div>
+    </div>
+  </script>
+
+<div class="dropdown" id="menu">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Select Variable
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#" class="selected selectable" data="rentersseverecostburden_10" value="Renters w/ Severe Housing Cost Burden (%)" data-type="cartocss">Renters w/ Severe Housing Cost Burden</a></li>
+    <li><a href="#" class="selectable" data="housingunitsowneroccupied_10" value="Owner Occupied Housing Units (%)" data-type="cartocss">Owner Occupied Housing Units</a></li>
+    <li><a href="#" class="selectable" data="foreclosuresper10000_10" value="Foreclosures (per 10K Homes)" data-type="cartocss">Foreclosures</a></li>
+  </ul>
+</div>
+
+<div class='my-legend'>
+<div class='legend-attribute-title'>Renters w/ Severe Housing Cost Burden (%)</div>
+<div class='legend-attribute-scale'>
+  <ul class='legend-attribute-labels'>
+    <li><span id="legend-attribute-chip-1"></span><span class="legend-attribute-label" id="legend-attribute-label-1"></span></li>
+    <li><span id="legend-attribute-chip-2"></span><span class="legend-attribute-label" id="legend-attribute-label-2"></span></li>
+    <li><span id="legend-attribute-chip-3"></span><span class="legend-attribute-label" id="legend-attribute-label-3"></span></li>
+    <li><span id="legend-attribute-chip-4"></span><span class="legend-attribute-label" id="legend-attribute-label-4"></span></li>
+    <li><span id="legend-attribute-chip-5"></span><span class="legend-attribute-label" id="legend-attribute-label-5"></span></li>
+  </ul>
+</div>
+<!-- <div class='legend-source'>Source: <a href="#link to source">Name of source</a></div> -->
+<div class='legend-title'>Cumulative Coal Production (1983-2013)<br><small>Circle Size proportionate to production</small></div>
+<!-- <div class='legend-coal-scale'>
+  <ul class='legend-coal2-labels'>
+    <li><span style="border-color:#d9d9d9"></span>Low</li>
+    <li><span style="border-color:#737373"></span>Medium</li>
+    <li><span style="border-color:#000"></span>High</li>
+  </ul>
+</div> -->
+</div>
+  
+
+  <!-- <div class="btn-group-vertical" id="menu" role="group" aria-label="...">
+    <button type="button" class="btn btn-default all selected selectable" data="hdi_10" data-type="cartocss">2010</button>
+    <button type="button" class="btn btn-default finnell selectable" data="hdi_08" data-type="cartocss">2008</button>
+    <button type="button" class="btn btn-default top-five selectable" data="hdi_05" data-type="cartocss">2005</button>
+    <button type="button" class="btn btn-default top-five selectable" data="hdi_00" data-type="cartocss">2000</button>
+  </div> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='app.js'></script>
+</body>
+</html>

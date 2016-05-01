@@ -1,0 +1,148 @@
+<html>
+<head>
+  <title>TCC - AHDI</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css" />
+  
+  <style type='cartocss/html' id='under6povertyperc_10'>
+    #adhp_counties_10{
+      polygon-fill: #FFFFCC;
+      polygon-opacity: 0.85;
+      line-color: #ffffff;
+      line-width: 0.5;
+      line-opacity: 0.5;
+    }
+    #adhp_counties_10 [ under6povertyperc_10 < 15] {
+       polygon-fill: #edf8e9;
+    }
+    #adhp_counties_10 [ under6povertyperc_10 >= 15] {
+       polygon-fill: #bae4b3;
+    }
+    #adhp_counties_10 [ under6povertyperc_10 >= 25] {
+       polygon-fill: #74c476;
+    }
+    #adhp_counties_10 [ under6povertyperc_10 >= 35] {
+       polygon-fill: #31a354;
+    }
+    #adhp_counties_10 [ under6povertyperc_10 >= 50] {
+       polygon-fill: #006d2c;
+    }
+  </style>
+  <style type='cartocss/html' id='over65povertyperc_10'>
+    #adhp_counties_10{
+      polygon-fill: #FFFFCC;
+      polygon-opacity: 0.85;
+      line-color: #ffffff;
+      line-width: 0.5;
+      line-opacity: 0.5;
+    }
+    #adhp_counties_10 [ over65povertyperc_10 < 7.5] {
+       polygon-fill: #eff3ff;
+    }
+    #adhp_counties_10 [ over65povertyperc_10 >= 7.5] {
+       polygon-fill: #bdd7e7;
+    }
+    #adhp_counties_10 [ over65povertyperc_10 >= 15] {
+       polygon-fill: #6baed6;
+    }
+    #adhp_counties_10 [ over65povertyperc_10 >= 22.5] {
+       polygon-fill: #3182bd;
+    }
+    #adhp_counties_10 [ over65povertyperc_10 >= 30] {
+       polygon-fill: #08519c;
+    }
+  </style>
+  <style type='cartocss/html' id='povertyrateperc_10'>
+    #adhp_counties_10{
+      polygon-fill: #fee5d9;
+      polygon-opacity: 0.85;
+      line-color: #ffffff;
+      line-width: 0.5;
+      line-opacity: 0.5;
+    }
+    #adhp_counties_10 [ povertyrateperc_10 < 10] {
+       polygon-fill: #fee5d9;
+    }
+    #adhp_counties_10 [ povertyrateperc_10 >= 10] {
+       polygon-fill: #fcae91;
+    }
+    #adhp_counties_10 [ povertyrateperc_10 >= 15] {
+       polygon-fill: #fb6a4a;
+    }
+    #adhp_counties_10 [ povertyrateperc_10 >= 20] {
+       polygon-fill: #de2d26;
+    }
+    #adhp_counties_10 [ povertyrateperc_10 >= 25] {
+       polygon-fill: #a50f15;
+    }
+  </style>
+</head>
+<body onload="init()">
+  <div class="title">
+    <h1><span class="title-variable">Poverty Rate (%)</span><br><span>2010</span></h1>
+  </div>
+  <div id='map'></div>
+
+  <script type="infowindow/html" id="infowindow_template">
+    <div class="cartodb-popup">
+      <a href="#close" class="cartodb-popup-close-button close">x</a>
+
+       <div class="cartodb-popup-content-wrapper">
+         <div class="cartodb-popup-content">
+          <h2>{{county}} County</h2>
+          <h4>{{state}}</h4>
+            <ul class="cartodb-content-list-no-decoration">
+              <li><b>Poverty Rate:</b> {{povertyrateperc_10}}</li>
+              <li><b>Children &lt; 6 in Poverty:</b> {{under6povertyperc_10}}%</li>
+              <li><b>Adults &gt; 65 in Poverty:</b> {{over65povertyperc_10}}%</li>
+              <li><b>Poverty Rate:</b> {{povertyrateperc_10}}</li>
+            </ul>
+         </div>
+       </div>
+       <div class="cartodb-popup-tip-container"></div>
+    </div>
+  </script>
+
+<div class="dropdown" id="menu">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Select Variable
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#" class="selected selectable" data="povertyrateperc_10" value="Income Index" data-type="cartocss">Poverty Rate</a></li>
+    <li><a href="#" class="selectable" data="under6povertyperc_10" value="Children <6 in Poverty (%)" data-type="cartocss">Children <6 in Poverty</a></li>
+    <li><a href="#" class="selectable" data="over65povertyperc_10" value="Adults &gt; 65 in Poverty (%)" data-type="cartocss">Adults &gt; 65 in Poverty</a></li>
+  </ul>
+</div>
+
+<div class='my-legend'>
+<div class='legend-attribute-title'>Poverty Rate (%)</div>
+<div class='legend-attribute-scale'>
+  <ul class='legend-attribute-labels'>
+    <li><span id="legend-attribute-chip-1"></span><span class="legend-attribute-label" id="legend-attribute-label-1"></span></li>
+    <li><span id="legend-attribute-chip-2"></span><span class="legend-attribute-label" id="legend-attribute-label-2"></span></li>
+    <li><span id="legend-attribute-chip-3"></span><span class="legend-attribute-label" id="legend-attribute-label-3"></span></li>
+    <li><span id="legend-attribute-chip-4"></span><span class="legend-attribute-label" id="legend-attribute-label-4"></span></li>
+    <li><span id="legend-attribute-chip-5"></span><span class="legend-attribute-label" id="legend-attribute-label-5"></span></li>
+  </ul>
+</div>
+<!-- <div class='legend-source'>Source: <a href="#link to source">Name of source</a></div> -->
+<div class='legend-title'>Cumulative Coal Production (1983-2013)</div>
+<div class='legend-coal-scale'>
+  <ul class='legend-coal-labels'>
+    <li><span style='background-image:url(http://i.imgur.com/Tb6DOzd.png);'></span>Low</li>
+    <li><span style='background-image:url(http://i.imgur.com/W86tt7d.png);'></span>Medium</li>
+    <li><span style='background-image:url(http://i.imgur.com/frUH6vq.png);'></span>High</li>
+  </ul>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='app.js'></script>
+</body>
+</html>
