@@ -60,9 +60,16 @@ window.onload = function() {
 
 var sublayer;
 
+var southWest = L.latLng(-12,-240);
+var northEast = L.latLng(72,-42);
+var bounds = L.latLngBounds(southWest, northEast)
+
 var map = new L.Map('map', {
   center: [39.828328, -98.579416],
   zoom: 4,
+  minZoom: 3,
+  maxZoom: 6,
+  maxBounds: bounds,
   zoomControl: false
 });
 
