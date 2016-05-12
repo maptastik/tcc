@@ -1,0 +1,165 @@
+<html>
+<head>
+  <title>TCC - Health Index</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css" />
+  
+  <style type='cartocss/html' id='healthindex_10'>
+    #adhp_state_all{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #adhp_state_all [ healthindex_10 < 4.39] {
+       polygon-fill: #ffffcc;
+    }
+    #adhp_state_all [ healthindex_10 >= 4.39] {
+       polygon-fill: #a1dab4;
+    }
+    #adhp_state_all [ healthindex_10 >= 4.92] {
+       polygon-fill: #41b6c4;
+    }
+    #adhp_state_all [ healthindex_10 >= 5.42] {
+       polygon-fill: #41b6c4;
+    }
+    #adhp_state_all [ healthindex_10 >= 5.84] {
+       polygon-fill: #253494;
+    }
+  </style>
+  <style type='cartocss/html' id='healthindex_08'>
+    #adhp_state_all{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #adhp_state_all [ healthindex_08 < 4.39] {
+       polygon-fill: #ffffcc;
+    }
+    #adhp_state_all [ healthindex_08 >= 4.39] {
+       polygon-fill: #a1dab4;
+    }
+    #adhp_state_all [ healthindex_08 >= 4.92] {
+       polygon-fill: #41b6c4;
+    }
+    #adhp_state_all [ healthindex_08 >= 5.42] {
+       polygon-fill: #2c7fb8;
+    }
+    #adhp_state_all [ healthindex_08 >= 5.84] {
+       polygon-fill: #253494;
+    }
+  </style>
+  <style type='cartocss/html' id='healthindex_05'>
+    #adhp_state_all{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #adhp_state_all [ healthindex_05 < 4.39] {
+       polygon-fill: #ffffcc;
+    }
+    #adhp_state_all [ healthindex_05 >= 4.39] {
+       polygon-fill: #a1dab4;
+    }
+    #adhp_state_all [ healthindex_05 >= 4.92] {
+       polygon-fill: #41b6c4;
+    }
+    #adhp_state_all [ healthindex_05 >= 5.42] {
+       polygon-fill: #2c7fb8;
+    }
+    #adhp_state_all [ healthindex_05 >= 5.84] {
+       polygon-fill: #253494;
+    }
+  </style>
+  <style type='cartocss/html' id='healthindex_00'>
+    #adhp_state_all{
+      polygon-fill: #FFEDA0;
+      polygon-opacity: 0.85;
+      line-color: #343434;
+      line-width: 0.5;
+      line-opacity: 1;
+    }
+    #adhp_state_all [ healthindex_00 < 4.39] {
+       polygon-fill: #ffffcc;
+    }
+    #adhp_state_all [ healthindex_00 >= 4.39] {
+       polygon-fill: #a1dab4;
+    }
+    #adhp_state_all [ healthindex_00 >= 4.92] {
+       polygon-fill: #41b6c4;
+    }
+    #adhp_state_all [ healthindex_00 >= 5.42] {
+       polygon-fill: #2c7fb8;
+    }
+    #adhp_state_all [ healthindex_00 >= 5.84] {
+       polygon-fill: #253494;
+    }
+  </style>
+</head>
+<body onload="init()">
+  <div class="title">
+    <h1>Health Index<br><span class="title-year">2010</span></h1>
+  </div>
+  <div id='map'></div>
+
+  <script type="infowindow/html" id="infowindow_template">
+    <div class="cartodb-popup">
+      <a href="#close" class="cartodb-popup-close-button close">x</a>
+
+       <div class="cartodb-popup-content-wrapper">
+         <div class="cartodb-popup-content">
+          <h2>{{name}}</h2>
+          <h4>Health Index Score</h4>
+            <ul class="cartodb-content-list-no-decoration">
+              <li><b>2010:</b> {{healthindex_10}}</li>
+              <li><b>2008:</b> {{healthindex_08}}</li>
+              <li><b>2005:</b> {{healthindex_05}}</li>
+              <li><b>2000:</b> {{healthindex_00}}</li>
+            </ul>
+         </div>
+       </div>
+       <div class="cartodb-popup-tip-container"></div>
+    </div>
+  </script>
+
+<div class="dropdown" id="menu">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Select Year
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#" class="selected selectable" data="healthindex_10" value="2010" data-type="cartocss">2010</a></li>
+    <li><a href="#" class="selectable" data="healthindex_08" value="2008" data-type="cartocss">2008</a></li>
+    <li><a href="#" class="selectable" data="healthindex_05" value="2005" data-type="cartocss">2005</a></li>
+    <li><a href="#" class="selectable" data="healthindex_00" value="2000" data-type="cartocss">2000</a></li>
+  </ul>
+</div>
+
+<div class='my-legend'>
+<div class='legend-title'>Health Index</div>
+<div class='legend-attribute-scale'>
+  <ul class='legend-attribute-labels'>
+    <li><span style='background:#ffffcc;'></span><4.39</li>
+    <li><span style='background:#a1dab4;'></span>4.39-4.92</li>
+    <li><span style='background:#41b6c4;'></span>4.92-5.42</li>
+    <li><span style='background:#2c7fb8;'></span>5.42-5.84</li>
+    <li><span style='background:#253494;'></span>>=5.84</li>
+  </ul>
+</div>
+<div class='legend-title'>Cumulative Coal Production (1983-2013)<br><small>Circle Size proportionate to production</small></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='app.js'></script>
+</body>
+</html>
