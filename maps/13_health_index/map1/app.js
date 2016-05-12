@@ -34,7 +34,7 @@ window.onload = function() {
 
 var sublayer;
 
-var southWest = L.latLng(12,-180);
+var southWest = L.latLng(-12,-240);
 var northEast = L.latLng(72,-42);
 var bounds = L.latLngBounds(southWest, northEast)
 
